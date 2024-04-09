@@ -58,23 +58,27 @@
     border-radius: 5px;
   }
   
-  button {
-    padding: 8px 87px;
-    margin-bottom: 20px;
-    font-size: 13px;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+  .forgot-password, 
+  .create-account {
+    padding: 5px;    
   }
+
+  // button {
+  //   padding: 8px 87px;
+  //   margin-bottom: 20px;
+  //   font-size: 13px;
+  //   color: #fff;
+  //   border: none;
+  //   border-radius: 6px;
+  //   cursor: pointer;
+  // }
       
-  button[type="submit"] {
+  .registerBtn {//button {//[type="submit"] {
     color: #fff;
     background-color: #007bff; /* Blue color */
   }
   
-  .forgot-password, 
-  .create-account {
-    padding: 5px;    
+  .create-account, .forgot-password {
+    color: #007bff;
   }
 

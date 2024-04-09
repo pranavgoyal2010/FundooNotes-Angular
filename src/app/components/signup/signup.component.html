@@ -3,7 +3,7 @@
       <div class="leftside">        
         <h2 class="header">Fundoo</h2>
         <h5 class="sub-header">Create your Fundoo Account</h5>
-        <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+        <form [formGroup]="registerForm" (ngSubmit)="handleRegister()">
           <!-- Grouping First Name and Last Name inputs together for side-by-side layout -->
           <div class="form-group-Initials">
             <div class="form-group-row">
@@ -49,17 +49,20 @@
   
           <br>          
 
-          <div class="registerBtn">
-            <div class="sign-in-instead">
-              <small
+          <div class="register">
+            <!-- <div class="sign-in-instead"> -->
+              <!-- <small
                 ><a href="#" style="text-decoration: none; color: #007bff"
                   >Sign in instead</a
                 ></small
-              >
-            </div>
-            <button mat-stroked-button color="primary" type="submit">Register</button>
+              > -->
+            <button class="sign-in-instead" mat-button type="submit" (click)="handleSignIn()">Sign in instead</button>
+            <!-- </div> -->
+            <button class="registerBtn" mat-stroked-button color="primary" type="submit">Register</button>
+            <!-- <button class="create-account" mat-button type="submit" (click)="handleCreateAccount()">Create Acoount</button> -->
           </div>            
         </form>
+        <!-- <button class="sign-in-instead" mat-button type="submit" (click)="handleSignIn()">Sign in instead</button> -->
       </div>
       <div class="rightside">
         <div class="image-container">

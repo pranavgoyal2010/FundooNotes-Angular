@@ -71,23 +71,28 @@
     flex-direction: column;
   }
   
-  .registerBtn {
+  .register {
     display: flex;
     justify-content: space-between;
     align-items: center;
     
   }
   
-  button {    
-    font-size: 15px;
-    color: #fff;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-  }
+  // button {    
+  //   font-size: 15px;
+  //   color: #fff;
+  //   border: none;
+  //   border-radius: 2px;
+  //   cursor: pointer;
+  // }
     
   
-  button[type="submit"] {
+  // button[type="submit"] {
+  .sign-in-instead {    
+    color: #007bff;
+  }
+
+  .registerBtn {
     color: #fff;
     background-color: #007bff;
   }

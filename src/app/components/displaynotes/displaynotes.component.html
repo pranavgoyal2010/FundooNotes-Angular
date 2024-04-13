@@ -1,0 +1,181 @@
+<div class="main-div" *ngFor="let note of notesData">
+  <div class="displaynote-div">
+    <!-- Card displaying note details -->
+    <div class="card">
+      <!-- Title section of the card -->
+      <div class="card-title" (click)="openEditNote()">
+        <span>{{note.title}}</span>
+      </div>
+
+      <!-- Description section of the card -->
+      <textarea
+        class="card-description"
+        [style.background-color]="note.color ? note.color : '#fffff'"
+        (click)="openEditNote()">{{note.description}}</textarea
+      >
+
+      <!-- Icon container -->
+      <div
+        class="icon-container"
+        *ngIf="iconAction != 'trash'; else trashIcons"
+      >
+        <!-- Reminder icon button -->
+        <button class="btn" matTooltip="Reminder">
+          <mat-icon
+            class="icon"
+            svgIcon="reminder-icon"
+            aria-hidden="false"
+            aria-label="Reminder SVG icon"
+          ></mat-icon>
+        </button>
+
+        <!-- Collaborator icon button -->
+        <button class="btn" matTooltip="Collaborator">
+          <mat-icon
+            class="icon"
+            svgIcon="coll-icon"
+            aria-hidden="false"
+            aria-label="Collaborator SVG icon"
+          ></mat-icon>
+        </button>
+
+        <!-- Background color options icon button -->
+        <button
+          class="btn"
+          (click)="toggleColorPicker()"
+          matTooltip="Background options"
+        >
+          <mat-icon
+            class="icon"
+            svgIcon="Color-Palatte-icon"
+            aria-hidden="false"
+            aria-label="Color Palette SVG icon"
+          ></mat-icon>
+        </button>
+
+        <!-- Add image icon button -->
+        <button class="btn" matTooltip="Add image">
+          <mat-icon
+            class="icon"
+            svgIcon="img-icon"
+            aria-hidden="false"
+            aria-label="Image SVG icon"
+          ></mat-icon>
+        </button>
+
+        <!-- Archive/Unarchive icon button -->
+        <ng-container *ngIf="iconAction === 'note'; else unarchiveButton">
+          <button
+            class="btn"
+            matTooltip="Archive"
+            (click)="openSnackBar('Note archived')"
+          >
+            <mat-icon
+              class="icon"
+              svgIcon="archive-icon"
+              (click)="handleIconsClick('archive', note.noteID)"
+              aria-hidden="false"
+              aria-label="Archive SVG icon"
+            ></mat-icon>
+          </button>
+        </ng-container>
+
+        <!-- More options icon button -->
+        <button class="btn" matTooltip="More">
+          <mat-icon
+            class="icon"
+            svgIcon="more-icon"
+            [matMenuTriggerFor]="menu1"
+            aria-hidden="false"
+            aria-label="More SVG icon"
+          ></mat-icon>
+        </button>
+
+        <!-- More options menu -->
+        <mat-menu #menu1="matMenu">
+          <button
+            mat-menu-item
+            (click)="handleIconsClick('trash', note.noteID)"
+          >
+            <span>Delete note</span>
+          </button>
+          <button mat-menu-item>
+            <span>Add label</span>
+          </button>
+          <button mat-menu-item>
+            <span>Add drawing</span>
+          </button>
+          <button mat-menu-item>
+            <span>Make a copy</span>
+          </button>
+        </mat-menu>
+      </div>
+
+      <!-- Template for displaying trash icons -->
+      <ng-template #trashIcons>
+        <div class="icon-container">
+          <!-- Delete forever icon button -->
+          <button
+            class="btn"
+            (click)="handleIconsClick('delete', note.noteID)"
+            matTooltip="Delete forever"
+            (click)="openSnackBar('Note deleted successfully')"
+          >
+            <mat-icon
+              class="icon"
+              svgIcon="delete-icon"
+              aria-hidden="false"
+              aria-label="Delete SVG icon"
+            ></mat-icon>
+          </button>
+
+          <!-- Restore icon button -->
+          <button
+            class="btn"
+            (click)="handleIconsClick('trash', note.noteID)"
+            matTooltip="Restore"
+            (click)="openSnackBar('Note restored')"
+          >
+            <mat-icon
+              class="icon"
+              svgIcon="restore-icon"
+              aria-hidden="false"
+              aria-label="Restore SVG icon"
+            ></mat-icon>
+          </button>
+        </div>
+      </ng-template>
+    </div>
+
+    <!-- Color picker container -->
+    <div *ngIf="showColorPicker" class="color-picker-container">
+      <!-- Row 1 color buttons -->
+      <div
+        class="row row1"
+        style="border-bottom: 1px solid #ccc; margin-bottom: 5px"
+      >
+        <!-- Button for color option -->
+        <button
+          class="color-btn"
+          style="background-color: #faafa8; border: 1px solid #faafa8"
+          (click)="selectColor('#FAAFA8', note.noteID)"
+        ></button>
+        <!-- Add more color buttons with different background colors and click handlers -->
+        <!-- Repeat this pattern for each row -->
+      </div>
+
+      <!-- Row 2 color buttons -->
+      <div
+        class="row row2"
+        style="border-bottom: 1px solid #ccc; margin-bottom: 5px"
+      >
+        <!-- Add more color buttons with different background colors and click handlers -->
+      </div>
+
+      <!-- Row 3 color buttons -->
+      <div class="row row3">
+        <!-- Add more color buttons with different background colors and click handlers -->
+      </div>
+    </div>
+  </div>
+</div>

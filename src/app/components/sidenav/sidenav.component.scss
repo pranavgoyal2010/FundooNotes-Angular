@@ -1,0 +1,92 @@
+::ng-deep .app-side-nav-cnt {
+    width: 100%;
+    display: flex;
+    height: calc(100vh - 80px);
+    margin-top: 10px;
+// position: fixed;
+}
+
+.icon-lable{
+    display: flex;
+    margin-top: 20px;
+}
+
+.icon-lable:hover{
+    cursor: pointer;
+    background: #FEEFC3;
+}
+
+.drawer-btn:hover{
+    background: #FEEFC3;
+    cursor: pointer;
+}
+
+.drawer-btn:active{
+    background: #FEEFC3;
+}
+.drawer-btn{
+    margin-left: 10px;
+    height: max-content;
+    border: none; 
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+mat-drawer-container{
+    width: 100%;
+}
+
+mat-drawer {
+    //width:9%;
+    height: 100%;
+    background-color: white;
+    padding: 50px 50px 50px 25px;
+// border: 1px solid black; 
+}
+mat-drawer-content {
+    display: flex;
+    //justify-content: center;
+    margin-left: 10px;
+    background-color: white;
+}
+.drawer-icon{
+    padding: 5px 1px;
+}
+
+.icons {
+    display: flex;
+    flex-direction: column;
+    // position: fixed;
+}
+
+.btn {
+    border: none; 
+    margin-bottom: 2.3em;
+    padding: 7px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+.btn:focus,
+.btn:active {
+    background-color: #FEEFC3;
+}
+
+.icon {
+    padding: 10px;
+}
+
+span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    font-family: "Google Sans", Roboto, Arial, sans-serif;
+    font-size: 16px;
+}

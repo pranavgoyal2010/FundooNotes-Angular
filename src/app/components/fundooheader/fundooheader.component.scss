@@ -1,0 +1,159 @@
+::ng-deep .app-fundoo-header-cnt {
+    display: flex;
+    width: 100%;
+   // position: fixed;
+}
+
+.dashboard_header {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    border-bottom: #000;
+    width: 100%;    
+}
+
+span {
+    color: #636A79;
+    font-size: 25px;
+}
+
+.mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+
+.keep-img {
+    height: 70px;
+    width: 70px;
+    margin-right: 4px;
+}
+
+.search-bar {
+    margin-left: 120px;
+    margin-right: 120px;
+    margin-top: 20px;
+    flex: auto;
+}
+
+.btn {
+    display: flex;
+    border: none; 
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.icon {
+    height: 30px;
+    width: 30px;
+}
+
+.refresh-btn {
+    margin-right: 50px;
+}
+.other-menu-btn{
+    margin-right: 50px;
+}
+.list-view-btn {
+    margin-right: 50px;
+}
+.setting-btn{
+    margin-right: 50px;
+}
+.button:active {
+    border-radius: 50%;
+    background-color:#f1f3f4 ;
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 1px 2px rgba(0.8, 0.8, 0.8, 0.8);
+    flex: auto; 
+    max-width: 40%;  
+    height: 40px;
+}
+.fundoo-note-account{
+    background-color: blueviolet ;
+    border-radius: 50%;
+}
+.fundoo-note-account span{
+    padding: 9px 13px;
+    color: white;
+    display: flex;
+   align-items: center;
+}
+.search-input {
+    padding: 8px;
+    border: none;
+    outline: none;
+    flex: auto;
+    font-size: 17px;
+    align-items: center;
+}
+.leftside-icon{
+    display: flex;
+    align-items: center;   
+    justify-content: center;
+}
+.rightside-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ .button {
+    background-color:white;
+}
+ 
+ 
+
+
+/* 
+.dashboard_header {
+    .mat-toolbar {
+      height: 64px; // Adjust height as needed
+      padding: 0 24px; // Add padding for better spacing
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      .logo-container {
+        display: flex;
+        align-items: center;
+  
+        .keep-img {
+          width: 40px; // Adjust image size as needed
+          margin-right: 12px; // Add margin between logo and brand name
+        }
+  
+        .brand-name {
+          font-size: 20px; // Adjust font size as needed
+          font-weight: bold;
+        }
+      }
+  
+      .search-container {
+        display: flex;
+        align-items: center;
+  
+        .search-input {
+          width: 500px; // Adjust input width as needed
+          height: 30px;
+          margin-left: 12px; // Add margin between search icon and input field
+        }
+      }
+
+      .action-buttons {
+        display: flex;
+        align-items: center;
+  
+        .btn {
+          margin-left: 8px; // Add margin between action buttons
+        }
+      }
+    }
+  }
+   */

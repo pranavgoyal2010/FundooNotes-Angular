@@ -40,7 +40,9 @@ export class SigninComponent implements OnInit {
     this.userService.loginApi({
       email : email,
       password : password
-    }).subscribe( results =>{console.log(results)},error=>{console.log(error)});
+    }).subscribe( results =>{localStorage.setItem("AuthToken", results.data)
+      this.router.navigate(['/dashboard/notes'])
+    },error=>{console.log(error)});
 
 
     console.log('Login successful', this.loginForm.value);

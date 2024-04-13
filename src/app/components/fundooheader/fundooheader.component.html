@@ -1,0 +1,120 @@
+<!-- <div style="width: 100%; height: 70px; border: 1px solid black;"></div> -->
+
+<!-- Main container for the dashboard header -->
+<div class="dashboard_header" style="width: 100%">
+    <!-- Angular Material toolbar -->
+    <mat-toolbar>
+      <!-- Container for the right-side icons and brand name -->
+      <div class="rightside-icon">
+        <!-- Button to toggle the drawer/menu -->
+        <button
+          class="btn button"
+          (click)="handleToggleDrawer()"
+          matTooltip="Main menu"
+        >
+          <!-- Icon for the main menu -->
+          <mat-icon
+            class="icon"
+            svgIcon="Menu-icon"
+            aria-hidden="false"
+            aria-label="Menu SVG icon"
+          ></mat-icon>
+        </button>
+        <!-- Logo for Fundoo Notes -->
+        <img
+          src="../../assets/googlekeepLogo.png"
+          class="keep-img"
+          alt="google keep"
+        />
+        <!-- Brand name -->
+        <span>Fundoo Notes</span>
+      </div>
+  
+      <!-- Container for the search input -->
+      <div class="search-container">
+        <!-- Button for search -->
+        <button class="btn button" matTooltip="Search">
+          <!-- Icon for search -->
+          <mat-icon
+            class="search-icon btn"
+            svgIcon="Search-icon"
+            aria-hidden="true"
+            aria-label="Search SVG icon"
+          ></mat-icon>
+        </button>
+        <!-- Input field for search -->
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search"
+          [(ngModel)]="searchState"
+          (input)="handleSearchQuery()"
+        />
+      </div>
+  
+      <!-- Container for the left-side icons -->
+      <div class="leftside-icon">
+        <!-- Button for refresh -->
+        <button class="btn refresh-btn button" matTooltip="Refresh">
+          <!-- Icon for refresh -->
+          <mat-icon
+            class="icon"
+            svgIcon="Refresh-icon"
+            aria-hidden="true"
+            aria-label="Refresh SVG icon"
+          ></mat-icon>
+        </button>
+        <!-- Button for list view -->
+        <button class="btn list-view-btn button" matTooltip="List">
+          <!-- Icon for list view -->
+          <mat-icon
+            class="icon"
+            svgIcon="List-view-icon"
+            aria-hidden="true"
+            aria-label="List view SVG icon"
+          ></mat-icon>
+        </button>
+        <!-- Button for settings -->
+        <button class="btn setting-btn button" matTooltip="Setting">
+          <!-- Icon for settings -->
+          <mat-icon
+            class="icon"
+            svgIcon="Setting-icon"
+            aria-hidden="true"
+            aria-label="Setting SVG icon"
+          ></mat-icon>
+        </button>
+        <!-- Button for other menu options -->
+        <button class="btn other-menu-btn button" matTooltip="Other menu">
+          <!-- Icon for other menu -->
+          <mat-icon
+            class="icon"
+            svgIcon="Other-menu-icon"
+            aria-hidden="true"
+            aria-label="Other menu SVG icon"
+          ></mat-icon>
+        </button>
+        <!-- Button for fundoo account -->
+        <button
+          class="btn button"
+          [matMenuTriggerFor]="menu1"
+          matTooltip="fundoo account"
+        >
+          <!-- Container for fundoo account icon -->
+          <div class="fundoo-note-account">
+            <!-- Icon for fundoo account -->
+            <span>P</span>
+          </div>
+        </button>
+  
+        <!-- Menu for fundoo account options -->
+        <mat-menu #menu1="matMenu">
+          <!-- Option to log out -->
+          <button mat-menu-item (click)="handleAccClick()">
+            <!-- Text for log out option -->
+            <span>Log out</span>
+          </button>
+        </mat-menu>
+      </div>
+    </mat-toolbar>
+  </div>

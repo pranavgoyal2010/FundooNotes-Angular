@@ -1,0 +1,66 @@
+<!-- <p>sidenav works!</p> -->
+<mat-drawer-container class="example-container" [hasBackdrop]="false">
+    <mat-drawer #drawer [opened]="drawerState" [mode]="'over'">
+      <div class="drawer-icons">
+        <div class="icon-lable">
+          <button class="drawer-btn btn1" (click)="notesNavigate(true)">
+            <mat-icon class="drawer-icon" svgIcon="Note-icon" aria-hidden="true" aria-label="Note SVG icon"></mat-icon>
+            <span>Notes</span>
+          </button>
+        </div>
+        <div class="icon-lable">
+          <button class="drawer-btn btn1" (click)="reminderNavigate(true)">
+            <mat-icon class="drawer-icon" svgIcon="Reminder-icon" aria-hidden="true"
+              aria-label="Other menu SVG icon"></mat-icon>
+            <span>Reminders</span>
+          </button>
+        </div>
+        <div class="icon-lable">
+          <button class="drawer-btn btn1" (click)="editNavigate(true)">
+            <mat-icon class="drawer-icon" svgIcon="Edit-labels-icon" aria-hidden="true"
+              aria-label="Other menu SVG icon"></mat-icon>
+            <span>Edit labels</span>
+          </button>
+        </div>
+        <div class="icon-lable">
+          <button class="drawer-btn btn1"  (click)="archiveNavigate(true)">
+            <mat-icon class="drawer-icon" svgIcon="Archive-icon" aria-hidden="true"
+              aria-label="Other menu SVG icon"></mat-icon>
+            <span>Archive</span>
+          </button>
+        </div>
+        <div class="icon-lable btn1">
+          <button class="drawer-btn" (click)="trashNavigate(true)">
+            <mat-icon class="drawer-icon" svgIcon="Trash-icon" aria-hidden="true"
+              aria-label="Other menu SVG icon"></mat-icon>
+            <span>Bin</span>
+          </button>
+        </div>
+      </div>
+    </mat-drawer>
+  
+  
+    <mat-drawer-content>
+      <div style="display: flex; width: 100%;">
+        <div class="icons">
+          <button class="btn" (click)="notesNavigate(false)">
+            <mat-icon class="icon" svgIcon="Note-icon" aria-hidden="true" aria-label="Note SVG icon"></mat-icon>
+          </button>
+          <button class="btn" (click)="reminderNavigate(false)">
+            <mat-icon class="icon" svgIcon="Reminder-icon" aria-hidden="true" aria-label="Other menu SVG icon"></mat-icon>
+          </button>
+          <button class="btn" (click)="editNavigate(false)">
+            <mat-icon class="icon" svgIcon="Edit-labels-icon" aria-hidden="true"
+              aria-label="Other menu SVG icon"></mat-icon>
+          </button>
+          <button class="btn" (click)="archiveNavigate(false)">
+            <mat-icon class="icon" svgIcon="Archive-icon" aria-hidden="true" aria-label="Other menu SVG icon"></mat-icon>
+          </button>
+          <button class="btn" (click)="trashNavigate(false)">
+            <mat-icon class="icon" svgIcon="Trash-icon" aria-hidden="true" aria-label="Other menu SVG icon"></mat-icon>
+          </button>
+        </div>
+        <router-outlet></router-outlet>    
+      </div>      
+    </mat-drawer-content>
+  </mat-drawer-container>

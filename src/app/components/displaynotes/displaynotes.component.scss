@@ -41,10 +41,14 @@
   }
   
   .icon-container {
-    display: flex;
+    display: hidden;
     justify-content: space-between;
     opacity: 0; 
     transition: opacity 0.3s ease; 
+
+    // :hover {
+    //   display : flex
+    // }
   }
   
   .card:hover .icon-container {

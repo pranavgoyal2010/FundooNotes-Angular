@@ -88,10 +88,28 @@ export class CreatenoteComponent implements OnInit {
     }
   }
 
-  handleArchive() {
+  /*handleArchive() {
     this.archive = !this.archive;
-    console.log(this.archive);
-  }
+    //console.log(this.archive);
+
+    this.archive = !this.archive;
+
+    const noteId = ;
+    const noteObj: NoteObj = {
+      noteId: noteId,
+      isArchived: this.archive
+    };
+
+    this.noteService.archiveNoteCall().subscribe(
+      (res) => {
+        console.log(res)
+        this.updateNotesList.emit({ action: "archive", data: noteObj });
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
+  }*/
 
   selectColor(color: string) {
     this.color = color;

@@ -1,14 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteService } from 'src/app/services/noteService/note.service';
+import { NoteObj } from 'src/assets/type';
 
-interface NoteObj {
-  noteId?: number,
-  title?: string,
-  description?: string,
-  isArchived?: boolean,
-  isDeleted?: boolean,
-  color?: string
-}
 @Component({
   selector: 'app-notescontainer',
   templateUrl: './notescontainer.component.html',

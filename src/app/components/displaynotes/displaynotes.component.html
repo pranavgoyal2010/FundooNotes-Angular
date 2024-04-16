@@ -15,11 +15,23 @@
       >
 
       <!-- Icon container -->
-      <div
-        class="icon-container"
-        *ngIf="iconAction != 'trash'; else trashIcons"
-      >
-        <!-- Reminder icon button -->
+      <div class="icon-container">
+        <div *ngIf = "container=='trash' else notesArchive">
+          <mat-icon
+            class="icon"
+            svgIcon="delete-icon"
+            aria-hidden="false"
+            aria-label="Reminder SVG icon"
+          ></mat-icon>
+          <mat-icon
+            class="icon"
+            svgIcon="restore-icon"
+            aria-hidden="false"
+            aria-label="Reminder SVG icon"
+          ></mat-icon>          
+        </div>
+        <ng-template #notesArchive>
+          <!-- Reminder icon button -->
         <button class="btn" matTooltip="Reminder">
           <mat-icon
             class="icon"
@@ -51,21 +63,21 @@
             aria-hidden="false"
             aria-label="Color Palette SVG icon"
           ></mat-icon>
-        </button>
-
-        <!-- Add image icon button -->
-        <button class="btn" matTooltip="Add image">
-          <mat-icon
-            class="icon"
-            svgIcon="img-icon"
-            aria-hidden="false"
-            aria-label="Image SVG icon"
-          ></mat-icon>
-        </button>
+        </button>        
 
         <!-- Archive/Unarchive icon button -->
-        <ng-container *ngIf="iconAction === 'note'; else unarchiveButton">
-          <button
+        <!-- <ng-container *ngIf="iconAction === 'note'; else unarchiveButton"> -->
+          <div *ngIf = "container == 'archive' else archiveIcon">
+            <mat-icon
+              class="icon"
+              svgIcon="unarchive-icon"
+              (click)="handleIconsClick('archive', note)"
+              aria-hidden="false"
+              aria-label="Archive SVG icon"
+            ></mat-icon>
+          </div>
+          <ng-template #archiveIcon>
+            <button
             class="btn"
             matTooltip="Archive"
             (click)="openSnackBar('Note archived')"
@@ -73,12 +85,13 @@
             <mat-icon
               class="icon"
               svgIcon="archive-icon"
-              (click)="handleIconsClick('archive', note.noteID)"
+              (click)="handleIconsClick('archive', note)"
               aria-hidden="false"
               aria-label="Archive SVG icon"
             ></mat-icon>
           </button>
-        </ng-container>
+          </ng-template>
+        <!-- </ng-container> -->
 
         <!-- More options icon button -->
         <button class="btn" matTooltip="More">
@@ -91,11 +104,13 @@
           ></mat-icon>
         </button>
 
+        </ng-template>
+        
         <!-- More options menu -->
         <mat-menu #menu1="matMenu">
           <button
             mat-menu-item
-            (click)="handleIconsClick('trash', note.noteID)"
+            (click)="handleIconsClick('trash', note)"
           >
             <span>Delete note</span>
           </button>
@@ -111,71 +126,22 @@
         </mat-menu>
       </div>
 
-      <!-- Template for displaying trash icons -->
-      <ng-template #trashIcons>
-        <div class="icon-container">
-          <!-- Delete forever icon button -->
-          <button
-            class="btn"
-            (click)="handleIconsClick('delete', note.noteID)"
-            matTooltip="Delete forever"
-            (click)="openSnackBar('Note deleted successfully')"
-          >
-            <mat-icon
-              class="icon"
-              svgIcon="delete-icon"
-              aria-hidden="false"
-              aria-label="Delete SVG icon"
-            ></mat-icon>
-          </button>
-
-          <!-- Restore icon button -->
-          <button
-            class="btn"
-            (click)="handleIconsClick('trash', note.noteID)"
-            matTooltip="Restore"
-            (click)="openSnackBar('Note restored')"
-          >
-            <mat-icon
-              class="icon"
-              svgIcon="restore-icon"
-              aria-hidden="false"
-              aria-label="Restore SVG icon"
-            ></mat-icon>
-          </button>
+      <mat-menu>
+        <div class="color-palate-cnt">    
+          <div class="col1" matTooltip="Default" (click)="handleIconsClick('color', note, '#FFFFFF')"></div>
+          <!-- <div class="col2" matTooltip="Coral" (click)="handleIconsClick('#FAAFA8')"></div>
+          <div class="col3" matTooltip="Peach" (click)="handleIconsClick('#F39F76')"></div>
+          <div class="col4" matTooltip="Sand" (click)="handleIconsClick('#FFF8B8')"></div>
+          <div class="col5" matTooltip="Mint" (click)="handleIconsClick('#E2F6D3')"></div>
+          <div class="col6" matTooltip="Sage" (click)="handleIconsClick('#B4DDD3')"></div>
+          <div class="col7" matTooltip="Fog" (click)="handleIconsClick('#D4E4ED')"></div>
+          <div class="col8" matTooltip="Storm" (click)="handleIconsClick('#AECCDC')"></div>
+          <div class="col9" matTooltip="Dusk" (click)="handleIconsClick('#D3BFDB')"></div>
+          <div class="col10" matTooltip="Blossom" (click)="handleIconsClick('#F6E2DD')"></div>
+          <div class="col11" matTooltip="Clay" (click)="handleIconsClick('#E9E3D4')"></div>
+          <div class="col12" matTooltip="Chalk" (click)="handleIconsClick('#EFEFF1')"></div>            -->
         </div>
-      </ng-template>
-    </div>
-
-    <!-- Color picker container -->
-    <div *ngIf="showColorPicker" class="color-picker-container">
-      <!-- Row 1 color buttons -->
-      <div
-        class="row row1"
-        style="border-bottom: 1px solid #ccc; margin-bottom: 5px"
-      >
-        <!-- Button for color option -->
-        <button
-          class="color-btn"
-          style="background-color: #faafa8; border: 1px solid #faafa8"
-          (click)="selectColor('#FAAFA8', note.noteID)"
-        ></button>
-        <!-- Add more color buttons with different background colors and click handlers -->
-        <!-- Repeat this pattern for each row -->
-      </div>
-
-      <!-- Row 2 color buttons -->
-      <div
-        class="row row2"
-        style="border-bottom: 1px solid #ccc; margin-bottom: 5px"
-      >
-        <!-- Add more color buttons with different background colors and click handlers -->
-      </div>
-
-      <!-- Row 3 color buttons -->
-      <div class="row row3">
-        <!-- Add more color buttons with different background colors and click handlers -->
-      </div>
+      </mat-menu>
     </div>
   </div>
 </div>

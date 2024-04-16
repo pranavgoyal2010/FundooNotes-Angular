@@ -30,4 +30,12 @@ export class HttpService {
   addNote(endpoint: string, data: Object): Observable<any> {
     return this.httpClient.post<any>(this.BaseUrl+endpoint, data, {headers: this.authHeader});
   }
+
+  trashNote(endpoint: string, data: Object): Observable<any> {
+    return this.httpClient.patch<any>(this.BaseUrl+endpoint, data, {headers: this.authHeader});
+  }
+
+  archiveNote(endpoint: string): Observable<any> {
+    return this.httpClient.patch<any>(this.BaseUrl+endpoint, {}, {headers: this.authHeader});
+  }
 }

@@ -15,6 +15,8 @@ import {
 } from 'src/assets/svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NoteObj } from 'src/assets/type';
+import { NoteService } from 'src/app/services/noteService/note.service';
 
 @Component({
   selector: 'app-displaynotes',
@@ -22,11 +24,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./displaynotes.component.scss']
 })
 export class DisplaynotesComponent implements OnInit {
-  @Input() notesData : any
+  @Input() notesData : NoteObj[] = []
+  @Input() container : string = ""
   @ViewChild('unarchiveButton')
   unarchiveButton!: TemplateRef<any>;
   // Output to emit events to parent component
-  @Output() updateList = new EventEmitter<{ action: string, data: { title: string, description: string, noteID: number, color: string, archive: boolean } }>();
+  @Output() updateNotesList = new EventEmitter<{ action: string, data: NoteObj}>();
   
   // Input to receive note data from parent component
   @Input() note!: { title: string, description: string, noteID: number, color: string, archive: boolean };
@@ -35,9 +38,9 @@ export class DisplaynotesComponent implements OnInit {
   @Input() iconAction!: string;
   
   // Flag to toggle color picker visibility
-  showColorPicker: boolean = false;
+  showColorPicker: boolean = false;  
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, public dialog: MatDialog, public snackBar: MatSnackBar) {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, public dialog: MatDialog, public snackBar: MatSnackBar, private noteService: NoteService) {
     // Register SVG icons
     iconRegistry.addSvgIconLiteral("reminder-icon", sanitizer.bypassSecurityTrustHtml(REMINDER_ICON))
     iconRegistry.addSvgIconLiteral("edit-icon", sanitizer.bypassSecurityTrustHtml(EDIT_ICON))
@@ -55,8 +58,20 @@ export class DisplaynotesComponent implements OnInit {
   }
 
   // Handle click events on icons
-  handleIconsClick(action: string, noteID: number) {
+  handleIconsClick(action: string, note: NoteObj, color?: string) {
     // This method is intentionally left empty
+    // API CALLING
+    // EMITING EVENT
+    if (action === "archive" || action === "unarchive") {
+      this.noteService.archiveNoteCall(note.noteId || 0).subscribe(() => {
+        this.updateNotesList.emit({ action: "archive", data: note})
+      }, (err: any) => console.log(err))
+    }
+    else if(action==="color")
+    {
+      //API calling
+      this.updateNotesList.emit({ action: "color", data: {...note, color: color}})
+    }
   }
 
   // Toggle color picker visibility

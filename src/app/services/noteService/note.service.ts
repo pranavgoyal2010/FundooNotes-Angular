@@ -14,5 +14,9 @@ export class NoteService {
 
   addNoteCall(data: Object) {
     return this.httpService.addNote("note", data);
+  }
+
+  archiveNoteCall(noteId: number) {
+    return this.httpService.archiveNote(`note/archive/${noteId}`);
   }  
 }

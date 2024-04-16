@@ -2,35 +2,35 @@
 <mat-drawer-container class="example-container" [hasBackdrop]="false">
     <mat-drawer #drawer [opened]="drawerState" [mode]="'over'">
       <div class="drawer-icons">
-        <div class="icon-lable">
-          <button class="drawer-btn btn1" (click)="notesNavigate(true)">
+        <div class="icon-lable" routerLink="/dashboard/notes">
+          <button class="drawer-btn btn1">
             <mat-icon class="drawer-icon" svgIcon="Note-icon" aria-hidden="true" aria-label="Note SVG icon"></mat-icon>
             <span>Notes</span>
           </button>
         </div>
         <div class="icon-lable">
-          <button class="drawer-btn btn1" (click)="reminderNavigate(true)">
+          <button class="drawer-btn btn1">
             <mat-icon class="drawer-icon" svgIcon="Reminder-icon" aria-hidden="true"
               aria-label="Other menu SVG icon"></mat-icon>
             <span>Reminders</span>
           </button>
         </div>
         <div class="icon-lable">
-          <button class="drawer-btn btn1" (click)="editNavigate(true)">
+          <button class="drawer-btn btn1">
             <mat-icon class="drawer-icon" svgIcon="Edit-labels-icon" aria-hidden="true"
               aria-label="Other menu SVG icon"></mat-icon>
             <span>Edit labels</span>
           </button>
         </div>
-        <div class="icon-lable">
-          <button class="drawer-btn btn1"  (click)="archiveNavigate(true)">
+        <div class="icon-lable" routerLink="/dashboard/archive">
+          <button class="drawer-btn btn1">
             <mat-icon class="drawer-icon" svgIcon="Archive-icon" aria-hidden="true"
               aria-label="Other menu SVG icon"></mat-icon>
             <span>Archive</span>
           </button>
         </div>
-        <div class="icon-lable btn1">
-          <button class="drawer-btn" (click)="trashNavigate(true)">
+        <div class="icon-lable btn1" routerLink="/dashboard/trash">
+          <button class="drawer-btn">
             <mat-icon class="drawer-icon" svgIcon="Trash-icon" aria-hidden="true"
               aria-label="Other menu SVG icon"></mat-icon>
             <span>Bin</span>
@@ -43,22 +43,21 @@
     <mat-drawer-content>
       <div style="display: flex; width: 100%;">
         <div class="icons">
-          <button class="btn" (click)="notesNavigate(false)">
-            <mat-icon class="icon" svgIcon="Note-icon" aria-hidden="true" aria-label="Note SVG icon"></mat-icon>
-          </button>
-          <button class="btn" (click)="reminderNavigate(false)">
-            <mat-icon class="icon" svgIcon="Reminder-icon" aria-hidden="true" aria-label="Other menu SVG icon"></mat-icon>
-          </button>
-          <button class="btn" (click)="editNavigate(false)">
-            <mat-icon class="icon" svgIcon="Edit-labels-icon" aria-hidden="true"
+          
+          <mat-icon class="icon" routerLink="/dashboard/notes" svgIcon="Note-icon" aria-hidden="true" aria-label="Note SVG icon"></mat-icon>
+          
+          
+          <mat-icon class="icon" svgIcon="Reminder-icon" aria-hidden="true" aria-label="Other menu SVG icon"></mat-icon>          
+          
+          <mat-icon class="icon" svgIcon="Edit-labels-icon" aria-hidden="true"
               aria-label="Other menu SVG icon"></mat-icon>
-          </button>
-          <button class="btn" (click)="archiveNavigate(false)">
-            <mat-icon class="icon" svgIcon="Archive-icon" aria-hidden="true" aria-label="Other menu SVG icon"></mat-icon>
-          </button>
-          <button class="btn" (click)="trashNavigate(false)">
-            <mat-icon class="icon" svgIcon="Trash-icon" aria-hidden="true" aria-label="Other menu SVG icon"></mat-icon>
-          </button>
+          
+          
+            <mat-icon class="icon" routerLink="/dashboard/archive" svgIcon="Archive-icon" aria-hidden="true" aria-label="Other menu SVG icon"></mat-icon>
+          
+          
+            <mat-icon class="icon" routerLink="/dashboard/trash" svgIcon="Trash-icon" aria-hidden="true" aria-label="Other menu SVG icon"></mat-icon>
+          
         </div>
         <router-outlet></router-outlet>    
       </div>      

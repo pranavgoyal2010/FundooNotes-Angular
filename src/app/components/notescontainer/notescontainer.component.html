@@ -1,2 +1,2 @@
 <app-createnote (updateNotesList)="handleUpdateNotesList($event)"></app-createnote>
-<app-displaynotes [notesData]="notesList"></app-displaynotes>
+<app-displaynotes (updateNotesList)="handleUpdateNotesList($event)" [notesData]="notesList" [container]="'notes'"></app-displaynotes>

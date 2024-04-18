@@ -38,4 +38,12 @@ export class HttpService {
   archiveNote(endpoint: string): Observable<any> {
     return this.httpClient.patch<any>(this.BaseUrl+endpoint, {}, {headers: this.authHeader});
   }
+
+  deleteNote(endpoint: string): Observable<any> {
+    return this.httpClient.delete<any>(this.BaseUrl+endpoint, {headers: this.authHeader});
+  }
+
+  updateNote(endpoint: string, data: Object): Observable<any> {
+    return this.httpClient.put<any>(this.BaseUrl+endpoint, data, {headers: this.authHeader});
+  }
 }

@@ -51,6 +51,14 @@ export class ArchivecontainerComponent implements OnInit {
       //this.notesList = this.notesList.filter((note: NoteObj) => note.isArchived === false);
       //this.ngOnInit();
     }
+    else {
+      this.notesList = this.notesList.map(note => {
+        if(note.noteId == data.noteId) {
+          return data
+        }
+        return note
+      })
+    }
     
   }  
 }

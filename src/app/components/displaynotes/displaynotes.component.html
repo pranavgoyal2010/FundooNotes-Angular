@@ -10,7 +10,8 @@
       <!-- Description section of the card -->
       <textarea
         class="card-description"        
-        (click)="openEditNote()">{{note.description}}</textarea
+        (click)="openEditNote()"
+        [style.background-color]="note.colour">{{note.description}}</textarea
       >
 
       <!-- Icon container -->
@@ -133,14 +134,14 @@
           <div class="col2" matTooltip="Coral" (click)="handleIconsClick('#FAAFA8', note)"></div>
           <div class="col3" matTooltip="Peach" (click)="handleIconsClick('#F39F76', note)"></div>
           <div class="col4" matTooltip="Sand" (click)="handleIconsClick('#FFF8B8', note)"></div>
-          <!-- <div class="col5" matTooltip="Mint" (click)="handleIconsClick('#E2F6D3')"></div>
-          <div class="col6" matTooltip="Sage" (click)="handleIconsClick('#B4DDD3')"></div>
-          <div class="col7" matTooltip="Fog" (click)="handleIconsClick('#D4E4ED')"></div>
-          <div class="col8" matTooltip="Storm" (click)="handleIconsClick('#AECCDC')"></div>
-          <div class="col9" matTooltip="Dusk" (click)="handleIconsClick('#D3BFDB')"></div>
-          <div class="col10" matTooltip="Blossom" (click)="handleIconsClick('#F6E2DD')"></div>
-          <div class="col11" matTooltip="Clay" (click)="handleIconsClick('#E9E3D4')"></div>
-          <div class="col12" matTooltip="Chalk" (click)="handleIconsClick('#EFEFF1')"></div>            -->
+          <div class="col5" matTooltip="Mint" (click)="handleIconsClick('#E2F6D3', note)"></div>
+          <div class="col6" matTooltip="Sage" (click)="handleIconsClick('#B4DDD3', note)"></div>
+          <div class="col7" matTooltip="Fog" (click)="handleIconsClick('#D4E4ED', note)"></div>
+          <div class="col8" matTooltip="Storm" (click)="handleIconsClick('#AECCDC', note)"></div>
+          <div class="col9" matTooltip="Dusk" (click)="handleIconsClick('#D3BFDB', note)"></div>
+          <div class="col10" matTooltip="Blossom" (click)="handleIconsClick('#F6E2DD', note)"></div>
+          <div class="col11" matTooltip="Clay" (click)="handleIconsClick('#E9E3D4', note)"></div>
+          <div class="col12" matTooltip="Chalk" (click)="handleIconsClick('#EFEFF1', note)"></div>
         </div>
       </mat-menu>
     </div>

@@ -21,6 +21,14 @@ export class NoteService {
   }
   
   trashNoteCall(noteId: number) {
-    return this.httpService.archiveNote(`note/trash/${noteId}`);
+    return this.httpService.trashNote(`note/trash/${noteId}`);
+  }
+
+  deleteNoteCall(noteId: number) {
+    return this.httpService.deleteNote(`note/${noteId}`);
+  }
+
+  updateNoteCall(noteId: number, data: Object) {
+    return this.httpService.updateNote(`note/${noteId}`, data);
   }
 }

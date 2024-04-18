@@ -86,14 +86,16 @@ export class DisplaynotesComponent implements OnInit {
     }
     else if (action === "delete") {
       // Move note to trash
-      this.noteService.trashNoteCall(note.noteId || 0).subscribe(() => {
+      this.noteService.deleteNoteCall(note.noteId || 0).subscribe(() => {
         this.updateNotesList.emit({ action: "delete", data: note });
       }, (err: any) => console.log(err));
     }
     else
     {
       //API calling
-      this.updateNotesList.emit({ action: "color", data: {...note, colour: action}})
+      this.noteService.updateNoteCall(note.noteId || 0, note).subscribe(() => {
+        this.updateNotesList.emit({ action: "color", data: {...note, colour: action}})
+      }, (err: any) => console.log(err));
     }
   }
 

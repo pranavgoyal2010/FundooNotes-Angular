@@ -14,7 +14,16 @@ export class NotescontainerComponent implements OnInit {
   constructor(private noteService: NoteService) { }
 
   ngOnInit(): void {
-    this.noteService.getAllNotesCall().subscribe((res)=>{this.notesList = res.data}, (err)=>{console.log(err)})
+    //this.noteService.getAllNotesCall().subscribe((res)=>{this.notesList = res.data}, (err)=>{console.log(err)})
+    this.noteService.getAllNotesCall().subscribe(
+      (res) => {
+        // Assuming res.data contains an array of notes
+        this.notesList = res.data.filter((note: NoteObj) => !note.isArchived && !note.isDeleted);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   handleUpdateNotesList($event: {action: string, data: NoteObj}) {
@@ -25,5 +34,19 @@ export class NotescontainerComponent implements OnInit {
     } else if(action === "archive" || action === "trash") {
       this.notesList = this.notesList.filter(note => note.noteId != data.noteId)
     }
+    else {
+      this.notesList = this.notesList.map(note => {
+        if(note.noteId == data.noteId) {
+          return data
+        }
+        return note
+      })
+    }
+    // map(note => {
+      // if(note.noteId == data.noteId){ 
+      //   return data
+      // }
+      // return note  
+      // })
   }
 }

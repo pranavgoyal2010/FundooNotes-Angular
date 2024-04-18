@@ -4,6 +4,6 @@ export interface NoteObj {
     description?: string,
     isArchived?: boolean,
     isDeleted?: boolean,
-    color?: string
+    colour?: string
   }
 

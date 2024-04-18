@@ -1,7 +1,7 @@
 <div class="main-div" *ngFor="let note of notesData">
-  <div class="displaynote-div">
+  <div class="displaynote-div" >
     <!-- Card displaying note details -->
-    <div class="card">
+    <div class="card" [style.background-color]="note.colour">
       <!-- Title section of the card -->
       <div class="card-title" (click)="openEditNote()">
         <span>{{note.title}}</span>
@@ -9,8 +9,7 @@
 
       <!-- Description section of the card -->
       <textarea
-        class="card-description"
-        [style.background-color]="note.color ? note.color : '#fffff'"
+        class="card-description"        
         (click)="openEditNote()">{{note.description}}</textarea
       >
 
@@ -22,12 +21,14 @@
             svgIcon="delete-icon"
             aria-hidden="false"
             aria-label="Reminder SVG icon"
+            (click) = "handleIconsClick('delete', note)"
           ></mat-icon>
           <mat-icon
             class="icon"
             svgIcon="restore-icon"
             aria-hidden="false"
             aria-label="Reminder SVG icon"
+            (click) = "handleIconsClick('untrash', note)"
           ></mat-icon>          
         </div>
         <ng-template #notesArchive>
@@ -53,15 +54,15 @@
 
         <!-- Background color options icon button -->
         <button
-          class="btn"
-          (click)="toggleColorPicker()"
+          class="btn"                    
           matTooltip="Background options"
         >
           <mat-icon
             class="icon"
             svgIcon="Color-Palatte-icon"
             aria-hidden="false"
-            aria-label="Color Palette SVG icon"
+            aria-label="Color Palette SVG icon"   
+            [matMenuTriggerFor]="colorPalete"                     
           ></mat-icon>
         </button>        
 
@@ -71,7 +72,7 @@
             <mat-icon
               class="icon"
               svgIcon="unarchive-icon"
-              (click)="handleIconsClick('archive', note)"
+              (click)="handleIconsClick('unarchive', note)"
               aria-hidden="false"
               aria-label="Archive SVG icon"
             ></mat-icon>
@@ -126,13 +127,13 @@
         </mat-menu>
       </div>
 
-      <mat-menu>
+      <mat-menu #colorPalete="matMenu">
         <div class="color-palate-cnt">    
-          <div class="col1" matTooltip="Default" (click)="handleIconsClick('color', note, '#FFFFFF')"></div>
-          <!-- <div class="col2" matTooltip="Coral" (click)="handleIconsClick('#FAAFA8')"></div>
-          <div class="col3" matTooltip="Peach" (click)="handleIconsClick('#F39F76')"></div>
-          <div class="col4" matTooltip="Sand" (click)="handleIconsClick('#FFF8B8')"></div>
-          <div class="col5" matTooltip="Mint" (click)="handleIconsClick('#E2F6D3')"></div>
+          <div class="col1" matTooltip="Default" (click)="handleIconsClick('#FFFFFF', note)"></div>
+          <div class="col2" matTooltip="Coral" (click)="handleIconsClick('#FAAFA8', note)"></div>
+          <div class="col3" matTooltip="Peach" (click)="handleIconsClick('#F39F76', note)"></div>
+          <div class="col4" matTooltip="Sand" (click)="handleIconsClick('#FFF8B8', note)"></div>
+          <!-- <div class="col5" matTooltip="Mint" (click)="handleIconsClick('#E2F6D3')"></div>
           <div class="col6" matTooltip="Sage" (click)="handleIconsClick('#B4DDD3')"></div>
           <div class="col7" matTooltip="Fog" (click)="handleIconsClick('#D4E4ED')"></div>
           <div class="col8" matTooltip="Storm" (click)="handleIconsClick('#AECCDC')"></div>

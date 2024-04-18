@@ -30,17 +30,28 @@ export class ArchivecontainerComponent implements OnInit {
   constructor(private noteService: NoteService, private data: DataService) {}
 
   ngOnInit(): void {
-    this.noteService.getAllNotesCall().subscribe((res)=>{this.notesList = res.data}, (err)=>{console.log(err)})
+    //this.noteService.getAllNotesCall().subscribe((res)=>{this.notesList = res.data}, (err)=>{console.log(err)})
+    this.noteService.getAllNotesCall().subscribe(
+      (res) => {
+        // Assuming res.data contains an array of notes
+        this.notesList = res.data.filter((note: NoteObj) => note.isArchived === true);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   } 
 
   handleUpdateNotesList($event: {action: string, data: NoteObj}) {
     console.log($event);
     const {action, data} = $event
-    if(action === "create") {
-      this.notesList = [$event.data, ...this.notesList]
-    } else if(action === "unarchive" || action === "trash") {
+    
+    if(action === "unarchive" || action === "trash") {
       this.notesList = this.notesList.filter(note => note.noteId != data.noteId)
+      //this.notesList = this.notesList.filter((note: NoteObj) => note.isArchived === false);
+      //this.ngOnInit();
     }
+    
   }  
 }
 

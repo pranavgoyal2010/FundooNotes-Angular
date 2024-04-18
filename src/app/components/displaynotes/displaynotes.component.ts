@@ -58,19 +58,42 @@ export class DisplaynotesComponent implements OnInit {
   }
 
   // Handle click events on icons
-  handleIconsClick(action: string, note: NoteObj, color?: string) {
+  handleIconsClick(action: string, note: NoteObj) {
     // This method is intentionally left empty
     // API CALLING
     // EMITING EVENT
-    if (action === "archive" || action === "unarchive") {
+    if (action === "archive") {
       this.noteService.archiveNoteCall(note.noteId || 0).subscribe(() => {
         this.updateNotesList.emit({ action: "archive", data: note})
       }, (err: any) => console.log(err))
     }
-    else if(action==="color")
+    else if(action === "unarchive") {
+      this.noteService.archiveNoteCall(note.noteId || 0).subscribe(() => {
+        this.updateNotesList.emit({ action: "unarchive", data: note})
+      }, (err: any) => console.log(err))
+    }    
+    else if (action === "trash") {
+      // Move note to trash
+      this.noteService.trashNoteCall(note.noteId || 0).subscribe(() => {
+        this.updateNotesList.emit({ action: "trash", data: note });
+      }, (err: any) => console.log(err));
+    }
+    else if (action === "untrash") {
+      // Move note to trash
+      this.noteService.trashNoteCall(note.noteId || 0).subscribe(() => {
+        this.updateNotesList.emit({ action: "untrash", data: note });
+      }, (err: any) => console.log(err));
+    }
+    else if (action === "delete") {
+      // Move note to trash
+      this.noteService.trashNoteCall(note.noteId || 0).subscribe(() => {
+        this.updateNotesList.emit({ action: "delete", data: note });
+      }, (err: any) => console.log(err));
+    }
+    else
     {
       //API calling
-      this.updateNotesList.emit({ action: "color", data: {...note, color: color}})
+      this.updateNotesList.emit({ action: "color", data: {...note, colour: action}})
     }
   }
 

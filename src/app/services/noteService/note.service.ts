@@ -18,5 +18,9 @@ export class NoteService {
 
   archiveNoteCall(noteId: number) {
     return this.httpService.archiveNote(`note/archive/${noteId}`);
-  }  
+  }
+  
+  trashNoteCall(noteId: number) {
+    return this.httpService.archiveNote(`note/trash/${noteId}`);
+  }
 }

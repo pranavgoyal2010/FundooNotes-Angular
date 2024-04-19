@@ -3,14 +3,15 @@
     <!-- Card displaying note details -->
     <div class="card" [style.background-color]="note.colour">
       <!-- Title section of the card -->
-      <div class="card-title" (click)="openEditNote()">
+
+      <div class="card-title" (click)="openEditNote(note)">
         <span>{{note.title}}</span>
       </div>
 
       <!-- Description section of the card -->
       <textarea
         class="card-description"        
-        (click)="openEditNote()"
+        (click)="openEditNote(note)"
         [style.background-color]="note.colour">{{note.description}}</textarea
       >
 

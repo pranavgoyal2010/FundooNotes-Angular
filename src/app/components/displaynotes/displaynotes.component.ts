@@ -17,6 +17,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteObj } from 'src/assets/type';
 import { NoteService } from 'src/app/services/noteService/note.service';
+import { EditnoteComponent } from '../editnote/editnote.component';
 
 @Component({
   selector: 'app-displaynotes',
@@ -110,8 +111,9 @@ export class DisplaynotesComponent implements OnInit {
   }
 
   // Open edit note dialog
-  openEditNote() {
-    // This method is intentionally left empty
+  openEditNote(noteObj : NoteObj) {
+    let dialogRef = this.dialog.open(EditnoteComponent, {data : noteObj})
+    dialogRef.afterClosed().subscribe((res)=>console.log(res))
   }
 
   // Open snackbar to display messages

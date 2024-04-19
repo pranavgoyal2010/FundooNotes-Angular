@@ -28,6 +28,7 @@ import { FundooheaderComponent } from './components/fundooheader/fundooheader.co
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { EditnoteComponent } from './components/editnote/editnote.component';
 
 
 
@@ -43,7 +44,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     ArchivecontainerComponent,
     TrashcontainerComponent,
     FundooheaderComponent,
-    SidenavComponent,    
+    SidenavComponent,
+    EditnoteComponent,    
     //NotecardComponent  
   ],
   imports: [
@@ -62,7 +64,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatMenuModule,
     MatCardModule,
     MatToolbarModule,    
-    MatSidenavModule,    
+    MatSidenavModule,  
+    MatDialogModule  
   ],
   providers: [],
   bootstrap: [AppComponent]

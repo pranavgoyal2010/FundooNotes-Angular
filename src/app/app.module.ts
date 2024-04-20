@@ -29,6 +29,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { EditnoteComponent } from './components/editnote/editnote.component';
+import { SearchnotePipe } from './pipe/searchnote.pipe';
 
 
 
@@ -45,7 +46,8 @@ import { EditnoteComponent } from './components/editnote/editnote.component';
     TrashcontainerComponent,
     FundooheaderComponent,
     SidenavComponent,
-    EditnoteComponent,    
+    EditnoteComponent,
+    SearchnotePipe,    
     //NotecardComponent  
   ],
   imports: [

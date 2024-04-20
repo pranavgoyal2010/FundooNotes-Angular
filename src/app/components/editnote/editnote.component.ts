@@ -10,16 +10,30 @@ import { NoteObj } from 'src/assets/type';
 export class EditnoteComponent implements OnInit {
   title? : string
   description? : string
+  colour? : string
+  noteService: any;
 
-  constructor( public dialogRef: MatDialogRef<EditnoteComponent>, @Inject(MAT_DIALOG_DATA) public data: NoteObj) {    
-    this.title = data.title
-    this.description = data.description    
+  constructor( public dialogRef: MatDialogRef<EditnoteComponent>, @Inject(MAT_DIALOG_DATA) public note: NoteObj) {    
+    this.title = note.title
+    this.description = note.description    
+    this.colour = note.colour
   }
 
   ngOnInit(): void {
   }
 
-  handleEditNote(){
-    this.dialogRef.close("abc")
+  handleEditNote(){  
+    const updatedNote : NoteObj = {
+      ...this.note,
+      title: this.title,
+      description: this.description,
+      colour : this.colour
+    }  
+    this.dialogRef.close(updatedNote)
+  }
+
+  toggleColorPicker()
+  {
+    
   }
 }

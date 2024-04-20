@@ -1,3 +1,39 @@
-<span>{{title}}</span>
+<!-- <span>{{title}}</span>
 <span>{{description}}</span>
-<button (click)="handleEditNote()">Send Data</button>
+<button (click)="handleEditNote()">Send Data</button> -->
+
+  <div class="displaynote-div" [style.background-color]="colour">
+    <div class="card">
+      <div class="card-title">        
+        <input [(ngModel)]="title" [style.background-color]="colour" />        
+      </div>
+      <textarea class="card-description" [(ngModel)]="description" [style.background-color]="colour">{{description}}</textarea>
+      <div class="icon-container">
+        <button class="btn">
+          <mat-icon class="icon" svgIcon="reminder-icon" aria-hidden="false" aria-label="Reminder SVG icon"></mat-icon>
+        </button>
+        <button class="btn">
+          <mat-icon class="icon" svgIcon="coll-icon" aria-hidden="false" aria-label="Collaborator SVG icon"></mat-icon>
+        </button>
+        <button class="btn" (click)="toggleColorPicker()"> 
+          <mat-icon class="icon" svgIcon="Color-Palatte-icon" aria-hidden="false" aria-label="Color Palette SVG icon"></mat-icon>
+        </button>
+        <button class="btn">
+          <mat-icon class="icon" svgIcon="img-icon" aria-hidden="false" aria-label="Image SVG icon"></mat-icon>
+        </button>        
+        <button class="btn">  
+          <mat-icon class="icon" svgIcon="archive-icon" aria-hidden="false" aria-label="Archive SVG icon"></mat-icon>
+        </button>
+        <button class="btn">
+          <mat-icon class="icon" svgIcon="more-icon" aria-hidden="false" aria-label="More SVG icon"></mat-icon>
+        </button>
+        <button class="btn">
+          <mat-icon class="icon" svgIcon="undo-icon" aria-hidden="false" aria-label="Undo SVG icon"></mat-icon>
+        </button>
+        <button class="btn">
+          <mat-icon class="icon" svgIcon="redo-icon" aria-hidden="false" aria-label="Restore SVG icon"></mat-icon>
+        </button>        
+      </div>     
+      <button mat-button style="font-size: 17px" (click)="handleEditNote()">Close</button> 
+    </div>    
+  </div>

@@ -1,150 +1,152 @@
-<div class="main-div" *ngFor="let note of notesData">
-  <div class="displaynote-div" >
-    <!-- Card displaying note details -->
-    <div class="card" [style.background-color]="note.colour">
-      <!-- Title section of the card -->
-
-      <div class="card-title" (click)="openEditNote(note)">
-        <span>{{note.title}}</span>
-      </div>
-
-      <!-- Description section of the card -->
-      <textarea
-        class="card-description"        
-        (click)="openEditNote(note)"
-        [style.background-color]="note.colour">{{note.description}}</textarea
-      >
-
-      <!-- Icon container -->
-      <div class="icon-container">
-        <div *ngIf = "container=='trash' else notesArchive">
-          <mat-icon
-            class="icon"
-            svgIcon="delete-icon"
-            aria-hidden="false"
-            aria-label="Reminder SVG icon"
-            (click) = "handleIconsClick('delete', note)"
-          ></mat-icon>
-          <mat-icon
-            class="icon"
-            svgIcon="restore-icon"
-            aria-hidden="false"
-            aria-label="Reminder SVG icon"
-            (click) = "handleIconsClick('untrash', note)"
-          ></mat-icon>          
+<div class="notes-main-cnt">
+  <div class="main-div" *ngFor="let note of notesData | searchNote : searchQuery">
+    <div class="displaynote-div" >
+      <!-- Card displaying note details -->
+      <div class="card" [style.background-color]="note.colour">
+        <!-- Title section of the card -->
+  
+        <div class="card-title" (click)="openEditNote(note)">
+          <span>{{note.title}}</span>
         </div>
-        <ng-template #notesArchive>
-          <!-- Reminder icon button -->
-        <button class="btn" matTooltip="Reminder">
-          <mat-icon
-            class="icon"
-            svgIcon="reminder-icon"
-            aria-hidden="false"
-            aria-label="Reminder SVG icon"
-          ></mat-icon>
-        </button>
-
-        <!-- Collaborator icon button -->
-        <button class="btn" matTooltip="Collaborator">
-          <mat-icon
-            class="icon"
-            svgIcon="coll-icon"
-            aria-hidden="false"
-            aria-label="Collaborator SVG icon"
-          ></mat-icon>
-        </button>
-
-        <!-- Background color options icon button -->
-        <button
-          class="btn"                    
-          matTooltip="Background options"
+  
+        <!-- Description section of the card -->
+        <textarea
+          class="card-description"        
+          (click)="openEditNote(note)"
+          [style.background-color]="note.colour">{{note.description}}</textarea
         >
-          <mat-icon
-            class="icon"
-            svgIcon="Color-Palatte-icon"
-            aria-hidden="false"
-            aria-label="Color Palette SVG icon"   
-            [matMenuTriggerFor]="colorPalete"                     
-          ></mat-icon>
-        </button>        
-
-        <!-- Archive/Unarchive icon button -->
-        <!-- <ng-container *ngIf="iconAction === 'note'; else unarchiveButton"> -->
-          <div *ngIf = "container == 'archive' else archiveIcon">
+  
+        <!-- Icon container -->
+        <div class="icon-container">
+          <div *ngIf = "container=='trash' else notesArchive">
             <mat-icon
               class="icon"
-              svgIcon="unarchive-icon"
-              (click)="handleIconsClick('unarchive', note)"
+              svgIcon="delete-icon"
               aria-hidden="false"
-              aria-label="Archive SVG icon"
+              aria-label="Reminder SVG icon"
+              (click) = "handleIconsClick('delete', note)"
             ></mat-icon>
+            <mat-icon
+              class="icon"
+              svgIcon="restore-icon"
+              aria-hidden="false"
+              aria-label="Reminder SVG icon"
+              (click) = "handleIconsClick('untrash', note)"
+            ></mat-icon>          
           </div>
-          <ng-template #archiveIcon>
-            <button
-            class="btn"
-            matTooltip="Archive"
-            (click)="openSnackBar('Note archived')"
+          <ng-template #notesArchive>
+            <!-- Reminder icon button -->
+          <button class="btn" matTooltip="Reminder">
+            <mat-icon
+              class="icon"
+              svgIcon="reminder-icon"
+              aria-hidden="false"
+              aria-label="Reminder SVG icon"
+            ></mat-icon>
+          </button>
+  
+          <!-- Collaborator icon button -->
+          <button class="btn" matTooltip="Collaborator">
+            <mat-icon
+              class="icon"
+              svgIcon="coll-icon"
+              aria-hidden="false"
+              aria-label="Collaborator SVG icon"
+            ></mat-icon>
+          </button>
+  
+          <!-- Background color options icon button -->
+          <button
+            class="btn"                    
+            matTooltip="Background options"
           >
             <mat-icon
               class="icon"
-              svgIcon="archive-icon"
-              (click)="handleIconsClick('archive', note)"
+              svgIcon="Color-Palatte-icon"
               aria-hidden="false"
-              aria-label="Archive SVG icon"
+              aria-label="Color Palette SVG icon"   
+              [matMenuTriggerFor]="colorPalete"                     
+            ></mat-icon>
+          </button>        
+  
+          <!-- Archive/Unarchive icon button -->
+          <!-- <ng-container *ngIf="iconAction === 'note'; else unarchiveButton"> -->
+            <div *ngIf = "container == 'archive' else archiveIcon">
+              <mat-icon
+                class="icon"
+                svgIcon="unarchive-icon"
+                (click)="handleIconsClick('unarchive', note)"
+                aria-hidden="false"
+                aria-label="Archive SVG icon"
+              ></mat-icon>
+            </div>
+            <ng-template #archiveIcon>
+              <button
+              class="btn"
+              matTooltip="Archive"
+              (click)="openSnackBar('Note archived')"
+            >
+              <mat-icon
+                class="icon"
+                svgIcon="archive-icon"
+                (click)="handleIconsClick('archive', note)"
+                aria-hidden="false"
+                aria-label="Archive SVG icon"
+              ></mat-icon>
+            </button>
+            </ng-template>
+          <!-- </ng-container> -->
+  
+          <!-- More options icon button -->
+          <button class="btn" matTooltip="More">
+            <mat-icon
+              class="icon"
+              svgIcon="more-icon"
+              [matMenuTriggerFor]="menu1"
+              aria-hidden="false"
+              aria-label="More SVG icon"
             ></mat-icon>
           </button>
+  
           </ng-template>
-        <!-- </ng-container> -->
-
-        <!-- More options icon button -->
-        <button class="btn" matTooltip="More">
-          <mat-icon
-            class="icon"
-            svgIcon="more-icon"
-            [matMenuTriggerFor]="menu1"
-            aria-hidden="false"
-            aria-label="More SVG icon"
-          ></mat-icon>
-        </button>
-
-        </ng-template>
-        
-        <!-- More options menu -->
-        <mat-menu #menu1="matMenu">
-          <button
-            mat-menu-item
-            (click)="handleIconsClick('trash', note)"
-          >
-            <span>Delete note</span>
-          </button>
-          <button mat-menu-item>
-            <span>Add label</span>
-          </button>
-          <button mat-menu-item>
-            <span>Add drawing</span>
-          </button>
-          <button mat-menu-item>
-            <span>Make a copy</span>
-          </button>
+          
+          <!-- More options menu -->
+          <mat-menu #menu1="matMenu">
+            <button
+              mat-menu-item
+              (click)="handleIconsClick('trash', note)"
+            >
+              <span>Delete note</span>
+            </button>
+            <button mat-menu-item>
+              <span>Add label</span>
+            </button>
+            <button mat-menu-item>
+              <span>Add drawing</span>
+            </button>
+            <button mat-menu-item>
+              <span>Make a copy</span>
+            </button>
+          </mat-menu>
+        </div>
+  
+        <mat-menu #colorPalete="matMenu">
+          <div class="color-palate-cnt">    
+            <div class="col1" matTooltip="Default" (click)="handleIconsClick('#FFFFFF', note)"></div>
+            <div class="col2" matTooltip="Coral" (click)="handleIconsClick('#FAAFA8', note)"></div>
+            <div class="col3" matTooltip="Peach" (click)="handleIconsClick('#F39F76', note)"></div>
+            <div class="col4" matTooltip="Sand" (click)="handleIconsClick('#FFF8B8', note)"></div>
+            <div class="col5" matTooltip="Mint" (click)="handleIconsClick('#E2F6D3', note)"></div>
+            <div class="col6" matTooltip="Sage" (click)="handleIconsClick('#B4DDD3', note)"></div>
+            <div class="col7" matTooltip="Fog" (click)="handleIconsClick('#D4E4ED', note)"></div>
+            <div class="col8" matTooltip="Storm" (click)="handleIconsClick('#AECCDC', note)"></div>
+            <div class="col9" matTooltip="Dusk" (click)="handleIconsClick('#D3BFDB', note)"></div>
+            <div class="col10" matTooltip="Blossom" (click)="handleIconsClick('#F6E2DD', note)"></div>
+            <div class="col11" matTooltip="Clay" (click)="handleIconsClick('#E9E3D4', note)"></div>
+            <div class="col12" matTooltip="Chalk" (click)="handleIconsClick('#EFEFF1', note)"></div>
+          </div>
         </mat-menu>
       </div>
-
-      <mat-menu #colorPalete="matMenu">
-        <div class="color-palate-cnt">    
-          <div class="col1" matTooltip="Default" (click)="handleIconsClick('#FFFFFF', note)"></div>
-          <div class="col2" matTooltip="Coral" (click)="handleIconsClick('#FAAFA8', note)"></div>
-          <div class="col3" matTooltip="Peach" (click)="handleIconsClick('#F39F76', note)"></div>
-          <div class="col4" matTooltip="Sand" (click)="handleIconsClick('#FFF8B8', note)"></div>
-          <div class="col5" matTooltip="Mint" (click)="handleIconsClick('#E2F6D3', note)"></div>
-          <div class="col6" matTooltip="Sage" (click)="handleIconsClick('#B4DDD3', note)"></div>
-          <div class="col7" matTooltip="Fog" (click)="handleIconsClick('#D4E4ED', note)"></div>
-          <div class="col8" matTooltip="Storm" (click)="handleIconsClick('#AECCDC', note)"></div>
-          <div class="col9" matTooltip="Dusk" (click)="handleIconsClick('#D3BFDB', note)"></div>
-          <div class="col10" matTooltip="Blossom" (click)="handleIconsClick('#F6E2DD', note)"></div>
-          <div class="col11" matTooltip="Clay" (click)="handleIconsClick('#E9E3D4', note)"></div>
-          <div class="col12" matTooltip="Chalk" (click)="handleIconsClick('#EFEFF1', note)"></div>
-        </div>
-      </mat-menu>
     </div>
   </div>
 </div>

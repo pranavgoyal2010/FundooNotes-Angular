@@ -1,33 +1,37 @@
+::ng-deep .app-signup-cnt {
+  display: flex;
+  height: 100vh;
+}
+
 .wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-  }
-  
-  .border {
-    display: flex;
+    // height: 100vh;
+    margin: auto;
+    width: 50%;
     border: 1px solid #000;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(101, 0, 0, 0.1);
+    padding: 20px 25px;
+    justify-content: space-between;
   }
   
-  .leftside,
-  .rightside {
-    flex: 1;
-  }
   
   .leftside {
-    padding: 40px;
-  }
-
-  
-  
-  .leftside form {
-    margin-top: 10px;
+    width: 60%;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
   }
+
+  .rightside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 35%;
+  }
+    
   
   .header {
     font-size: 20px;
@@ -39,13 +43,21 @@
     color: #333;
   }
   
-  .form-group {
-    margin-bottom: 20px;
-    flex: 1;
+  .signup-form-cnt {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
   
-  .form-group-row {
-    margin-top: 10px;
+  .signup-first-last-name-cnt {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+  }
+  
+  .abc {
+    width: 45%;
   }
 
   label {
@@ -53,29 +65,17 @@
     color: #333;
   }
   
-  input[type="text"],
-  input[type="email"] {
-    width: 100%;
-    padding: 9px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-  }
   
-  .example-container mat-form-field + mat-form-field {
-    margin-left: 8px;
-  }
   
-  .input {
-    display: flex;
-    flex-direction: column;
-  }
   
-  .register {
+  
+  
+  
+  .signup-signin-register-btn-cnt {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+    width: 100%;
   }
   
   // button {    
@@ -97,80 +97,49 @@
     background-color: #007bff;
   }
   
-  .image-container {
-    height: 350px;
+  .image-container {    
     width: 300px;
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
   }
   
-  .image-container img {
-    max-height: 200%;
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+  .image-container img {    
+    height: auto;    
   }
   
   .text-below-image {
-    text-align: left;
+    text-align: center;
     margin-top: 0px;
   }
   
   /* Ensure the form-group for email spans full width */
-.form-group.email {
-    flex: 0 0 100%; /* Do not grow, do not shrink, be exactly 100% of the container width */
-    margin-right: 0; /* No margin to the right necessary */
-  }
+
 
   .text-below-image span {
     font-size: 14px;
     color: #666;
   }
-
-  .form-group-row mat-form-field {
-    flex: 1;
-    margin-right: 20px; /* Adds space to the right of each mat-form-field */
-  }
-  
-  .form-group-row mat-form-field:last-child {
-    margin-right: 0; /* Ensures the last mat-form-field does not have a right margin */
-  }
-
-  .form-group-Initials {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .form-group.email mat-form-field {
-    width: 100%; /* Ensures the email field takes up the full width */
-  }
-
-  .form-group-row {
-    display: flex;
-    justify-content: space-between; /* Adjusts spacing between the input fields */
-  }
-  
-  .email-container mat-form-field + mat-form-field {
-    margin-left: 8px;
-  }
-  :host {
-    display: flex;
     
-    flex-direction: column;
-    align-items: flex-center;
-  }
-  
-  .form-group {
-    margin-bottom: 25px;
-    flex: 1; /* Ensure form groups can expand */
-  }
+  @media screen and (min-width: 300px) and (max-width: 600px) {
+    .wrapper {
+      width: calc(100% - 40px);
+      padding: 10px 15px;
+    }
+    
+    .leftside {
+      width: 100%;
+    }
 
-  .form-group email{
-    margin-bottom: 1px;
-    flex: 1;
-  }
-  
-  .form-group:not(:last-child) {
-    margin-right: 35px;
+    .rightside {
+      display: none;
+    }
+    
+    .signup-first-last-name-cnt {      
+      flex-direction: column;      
+    }
+
+    .abc {
+      width: 100%;
+    }
   }

@@ -7,7 +7,10 @@ import { UserService } from 'src/app/services/userService/user.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.scss'],
+  host: {
+    class: 'app-signup-cnt'
+  }  
 })
 
 export class SignupComponent implements OnInit {

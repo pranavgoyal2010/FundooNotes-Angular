@@ -1,8 +1,14 @@
+::ng-deep .app-signin-cnt {
+  display: flex;
+  margin: auto;
+}
+
 .wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    // height: 100vh;
+    margin: auto;
   }
   
   .border {

@@ -1,20 +1,20 @@
 <div class="wrapper">
-    <div class="border">      
+    <!-- <div class="border">       -->
       <div class="leftside">        
         <h2 class="header">Fundoo</h2>
         <h5 class="sub-header">Create your Fundoo Account</h5>
-        <form [formGroup]="registerForm" (ngSubmit)="handleRegister()">
+        <form class="signup-form-cnt" [formGroup]="registerForm" (ngSubmit)="handleRegister()">
           <!-- Grouping First Name and Last Name inputs together for side-by-side layout -->
-          <div class="form-group-Initials">
-            <div class="form-group-row">
-              <mat-form-field appearance="outline">
+          <!-- <div class="form-group-Initials"> -->
+            <div class="signup-first-last-name-cnt">
+              <mat-form-field class="abc" appearance="outline">
                 <mat-label>Enter First Name</mat-label>
                 <input matInput placeholder="First Name" formControlName="firstName">  
                 <mat-error *ngIf="submitted && registerForm.get('firstName')?.errors?.['required']">
                   First Name is required
                 </mat-error>              
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field class="abc" appearance="outline">
                 <mat-label>Enter Last Name</mat-label>
                 <input matInput placeholder="Last Name" formControlName="lastName">
                 <mat-error *ngIf="submitted && registerForm.get('lastName')?.errors?.['required']">
@@ -24,7 +24,7 @@
             </div>
   
             <!-- Email input field that spans the full width -->
-            <div class="form-group email" [ngClass]="{'has-error': submitted && registerForm.get('email')?.invalid}">
+            
               <mat-form-field appearance="outline">
                 <mat-label>Enter your Email</mat-label>
                 <input matInput placeholder="Email" formControlName="email">
@@ -43,24 +43,15 @@
                 <mat-error *ngIf="submitted && registerForm.get('password')?.errors?.['required']">
                   Password is required
                 </mat-error>
-              </mat-form-field>              
-            </div>
-          </div>
+              </mat-form-field>  
+              <div class="signup-signin-register-btn-cnt">
+                <button class="sign-in-instead" mat-button type="submit" (click)="handleSignIn()">Sign in instead</button>
+                <button class="registerBtn" mat-stroked-button color="primary" type="submit">Register</button>
+              </div>            
+              
+          <!-- </div> -->
   
-          <br>          
-
-          <div class="register">
-            <!-- <div class="sign-in-instead"> -->
-              <!-- <small
-                ><a href="#" style="text-decoration: none; color: #007bff"
-                  >Sign in instead</a
-                ></small
-              > -->
-            <button class="sign-in-instead" mat-button type="submit" (click)="handleSignIn()">Sign in instead</button>
-            <!-- </div> -->
-            <button class="registerBtn" mat-stroked-button color="primary" type="submit">Register</button>
-            <!-- <button class="create-account" mat-button type="submit" (click)="handleCreateAccount()">Create Acoount</button> -->
-          </div>            
+          
         </form>
         <!-- <button class="sign-in-instead" mat-button type="submit" (click)="handleSignIn()">Sign in instead</button> -->
       </div>
@@ -72,5 +63,5 @@
           <span>One account. All of Fundoo working for you.</span>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
   </div>

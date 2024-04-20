@@ -51,7 +51,7 @@ export class FundooheaderComponent implements OnInit {
   }
 
   handleSearchQuery() {
-   // this.data.updateSearchQuery(this.searchState)
+    this.dataService.updateSearchQuery(this.searchState)
   }
 
   ngOnDestroy() {
